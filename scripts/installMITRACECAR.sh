@@ -3,6 +3,7 @@
 # Usage installRACECAR.sh <dirName>
 # dirName defaults to racecar-ws
 # Fetches RACECAR ROS components, installs dependencies, and then catkin_make the workspace
+WHEREAMI=$PWD
 
 source /opt/ros/kinetic/setup.bash
 DEFAULTDIR=~/racecar-ws
@@ -19,8 +20,7 @@ else
   exit 1
 fi
 cd "$DEFAULTDIR"
-
-wget -q https://raw.githubusercontent.com/racecarj/racecar/RacecarJTransitory/racecar.rosinstall -O "$DEFAULTDIR"/.rosinstall
+cp "$WHEREAMI"/Racecar.rosinstall "$DEFAULTDIR"/.rosinstall
 
 wstool update
 
